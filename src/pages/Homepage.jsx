@@ -91,21 +91,6 @@ function Homepage(){
         // --- 2. Initialization & Resize Logic ---
         const init = () => {
             circlesArray = [];
-            
-            // Handle High DPI Screens
-            const dpr = window.devicePixelRatio || 1;
-            
-            // We set the CSS style width/height to fill the screen
-            canvas.style.width = window.innerWidth + 'px';
-            canvas.style.height = (window.innerHeight / 1.6) + 'px';
-
-            // We set the internal buffer size (scaled by DPR)
-            canvas.width = window.innerWidth * dpr;
-            canvas.height = (window.innerHeight / 1.6) * dpr;
-
-            // Scale the drawing context so we can use logical coordinates
-            c.scale(dpr, dpr);
-
             // Recalculate number of circles based on screen size
             // (Using logical pixels for calculation)
             const logicalWidth = window.innerWidth;
@@ -146,9 +131,23 @@ function Homepage(){
         }
 
         const handleResize = () => {
-            // On resize, we just re-initialize the canvas dimensions and circles
-            // We do NOT call animate() again, because the loop is already running.
-            init(); 
+
+            const dpr = window.devicePixelRatio || 1;
+            if (!canvas) return;
+
+            // 1. Get the size the CSS is forcing on the element
+            var rect = canvas.getBoundingClientRect();
+
+            // 2. Set the internal buffer size to match
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+
+            // 3. IMPORTANT: Reset the scale! 
+            // Changing canvas.width resets the context, so we must re-apply scale.
+            c.scale(dpr, dpr);
+
+            c.clearRect(0,0,canvas.width,canvas.height);
+            init();
         }
 
         // Bind Listeners
@@ -156,6 +155,7 @@ function Homepage(){
         window.addEventListener('resize', handleResize);
 
         // Start
+        handleResize();
         init();
         animate();
 
@@ -807,7 +807,7 @@ function Homepage(){
 
         <>
         
-            <canvas id="TopCanvas" className="bg-gray-100 z-[-1] border-3 border-gray-300 rounded-lg absolute"></canvas>
+            <canvas id="TopCanvas" className="bg-gray-100 z-[-1] border-3 border-gray-300 rounded-lg absolute w-[100%] h-[40rem]"></canvas>
 
             
             <div className="z-0 absolute grid grid-cols-1 grid-rows-2 mt-[10rem] w-[100%] justify-center items-center">

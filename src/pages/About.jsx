@@ -1,5 +1,6 @@
 
 import TextPart from "../components/TextPart"
+import Connections from "../components/Connections"
 
 function About(){
 
@@ -16,6 +17,10 @@ function About(){
 
             <div className="mt-[3rem]">
                 <TextPart title="Message for you!" desc="Thanks you for walk around in the website!"></TextPart>
+            </div>
+
+            <div className="mt-[3rem]">
+                <Connections></Connections>
             </div>
 
         </>
