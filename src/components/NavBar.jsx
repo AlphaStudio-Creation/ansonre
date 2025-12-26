@@ -8,6 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { auth } from '../server/firebase-config';
 import { signOut } from 'firebase/auth';
 import { useState } from 'react';
+import { DOMAIN } from '../server/firebase-config';
 
 function NavBar(){
 
@@ -39,7 +40,16 @@ function NavBar(){
 
             <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="/">AnsonRE</Navbar.Brand>
+                    <Navbar.Brand href="/">
+                        <img
+                            alt=""
+                            src={DOMAIN + "weblogo.png"}
+                            width="30"
+                            height="30"
+                            className="d-inline-block align-top"
+                        />{' '}
+                        AnsonRE
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         

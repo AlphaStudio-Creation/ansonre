@@ -5,6 +5,8 @@ import Section from '../components/Section.jsx'
 import Breakline from '../components/BreakLine.jsx'
 import GlowingButton from '../components/GlowingButton.jsx'
 import Connections from '../components/Connections.jsx'
+import { DOMAIN } from '../server/firebase-config.js'
+
 
 const PARTICLES_COLOR = ["#9effb8","#ff9e9e","#9eb3ff","#cb9eff"]
 const PROGRAMMELOGOS = [
@@ -19,7 +21,7 @@ const PROGRAMMELOGOS = [
     "https://cdn.builder.io/api/v1/image/assets/TEMP/5731a5a7-689f-49ae-abf1-6e6dc00c2043?apiKey=7e8b177c7c374d8abaf3aebf27f1c17d&",
     "https://cdn.builder.io/api/v1/image/assets/TEMP/cb51d286-530f-42be-9e91-9c850522f127?apiKey=7e8b177c7c374d8abaf3aebf27f1c17d&",
     "https://cdn.builder.io/api/v1/image/assets/TEMP/44ba8437-f6fd-4a51-bfd3-262d7528f7a4?apiKey=7e8b177c7c374d8abaf3aebf27f1c17d&",
-    "http://localhost:5173/python.jpg",
+    DOMAIN + "python.jpg",
 
 ]
 

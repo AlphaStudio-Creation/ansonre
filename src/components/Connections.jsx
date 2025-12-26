@@ -1,9 +1,11 @@
 
+import { DOMAIN } from "../server/firebase-config"
+
 const CONNECTIONS_LOGO = [
 
-    ["http://localhost:5173/instagram.png","https://www.instagram.com/ansonrework/"],
-    ["http://localhost:5173/github.png","https://github.com/AlphaStudio-Creation"],
-    ["http://localhost:5173/threads.png","https://www.threads.com/@ansonrework"]
+    [DOMAIN + "instagram.png","https://www.instagram.com/ansonrework/"],
+    [DOMAIN + "github.png","https://github.com/AlphaStudio-Creation"],
+    [DOMAIN + "threads.png","https://www.threads.com/@ansonrework"]
 
 ]
 
